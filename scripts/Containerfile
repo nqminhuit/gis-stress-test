@@ -1,0 +1,5 @@
+FROM docker.io/alpine:3.20.1
+RUN apk add --no-cache git curl bash uuidgen
+WORKDIR /gis-stress-test
+COPY --chmod=0755 prepare.sh .
+CMD ./prepare.sh
