@@ -1,5 +1,21 @@
+FROM docker.io/maven:3.9.7-eclipse-temurin-21-alpine AS build-jar-gis
+RUN apk add --no-cache git
+RUN git clone --depth=1 https://github.com/nqminhuit/gis.git /app/gis
+WORKDIR /app/gis
+RUN mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn clean package
+
+FROM quay.io/quarkus/ubi-quarkus-mandrel-builder-image:23.1-jdk-21 AS build-executable-gis
+USER root
+WORKDIR /app/gis
+COPY --from=build-jar-gis /app/gis/target/gis-*.jar target/
+COPY --from=build-jar-gis /app/gis/target/lib target/lib
+RUN native-image -march=compatibility -cp target/gis-*.jar "org.nqm.Gis" --no-fallback
+RUN mv org.nqm.gis gis
+
 FROM docker.io/alpine:3.20.1
-RUN apk add --no-cache git curl bash uuidgen
-WORKDIR /gis-stress-test
+RUN apk add --no-cache git curl bash uuidgen hyperfine jq gcompat
+COPY --chmod=0755 configs.sh .
 COPY --chmod=0755 prepare.sh .
-CMD ./prepare.sh
+COPY --chmod=0755 benchmark.sh .
+COPY --from=build-executable-gis /app/gis/gis /bin
+CMD ./prepare.sh && ./benchmark.sh
