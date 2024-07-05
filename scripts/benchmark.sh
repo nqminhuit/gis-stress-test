@@ -82,7 +82,18 @@ function avg_commits() {
 }
 
 function main() {
-    cd $ROOT_MODULE
+    mkdir $ROOT_MODULE; cd $ROOT_MODULE
+    for i in $(seq 1 30)
+    do {
+            nc -z localhost $GITBUCKET_PORT || sleep 2;
+        }
+    done
+
+    for i in $(seq 1 $N_REPOS)
+    do {(
+           git clone $_GITBUCKET_URL/git/root/$SUB_MODULE_PREFIX$i.git
+       )}
+    done
     gis init
 
     hyperfine -r 100 -u millisecond --warmup 15 'gis' --export-json perf_gis.json

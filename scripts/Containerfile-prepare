@@ -1,0 +1,6 @@
+FROM docker.io/alpine:3.20.1
+RUN apk add --no-cache git curl bash uuidgen
+COPY --chmod=0755 configs.sh .
+COPY --chmod=0755 prepare.sh .
+COPY file_plain_text /
+CMD ./prepare.sh

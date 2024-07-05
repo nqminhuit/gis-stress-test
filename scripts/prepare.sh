@@ -101,6 +101,7 @@ function main() {
            foreach_subrepo_commit_and_push_to_branch branch-stresstest-$i
        )}
     done
+    echo "done prepare dataset..."
 }
 
 main

@@ -15,10 +15,9 @@ RUN native-image -march=compatibility -cp target/gis-*.jar "org.nqm.Gis" --no-fa
 RUN mv org.nqm.gis gis
 
 FROM docker.io/alpine:3.20.1
-RUN apk add --no-cache git curl bash uuidgen hyperfine jq gcompat
+RUN apk add --no-cache git curl bash hyperfine jq gcompat
 COPY --chmod=0755 configs.sh .
-COPY --chmod=0755 prepare.sh .
 COPY --chmod=0755 benchmark.sh .
 COPY --from=build-executable-gis /app/gis/gis /bin
 COPY file_plain_text /
-CMD ./prepare.sh && ./benchmark.sh
+CMD ./benchmark.sh

@@ -1,10 +1,20 @@
 #!/usr/bin/env sh
 
-printf "
+source scripts/configs.sh
+
+podman build -q -f scripts/Containerfile-prepare -t gis-stress-test-prepare
+podman build -q --no-cache -f scripts/Containerfile-benchmark -t gis-stress-test-benchmark
+
+gis_volume=/tmp/gis-stress-test/$N_REPOS.$N_FILES.$N_BRANCHES.$N_COMMITS.$N_MOD_FILES
+if [[ ! -d $gis_volume ]]
+then
+    echo "gitbucket dataset not exist, creating new one"
+    mkdir -p $gis_volume
+    printf "
 apiVersion: v1
 kind: Pod
 metadata:
-  name: stress-test
+  name: gis-stress-test-prepare
 spec:
   restartPolicy: Never
   containers:

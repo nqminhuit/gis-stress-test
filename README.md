@@ -26,6 +26,9 @@ source run.sh
 ```
 Observe repositores at: http://localhost:9898/
 
+The time to create test data is usally take longer time than the actual stress test. We can use `podman commit` to save dataset.
+https://docs.docker.com/reference/cli/docker/container/commit/
+
 # Report sample
 
 Performance is run with:
