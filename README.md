@@ -22,7 +22,7 @@ curl -X POST -H "Accept: application/json" -H "authorization: Basic cm9vdDpyb290
 # Run performance test inside container
 
 ```bash
-podman kube play --replace deploy.yaml --build; podman logs -f stress-test-scripts
+source run.sh
 ```
 Observe repositores at: http://localhost:9898/
 

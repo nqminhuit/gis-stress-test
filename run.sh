@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+
+printf "
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,3 +15,7 @@ spec:
       hostPort: 9898
   - name: scripts
     image: localhost/scripts
+" | podman kube play --replace --build -
+podman container wait stress-test-scripts
+podman cp stress-test-scripts:/benchmark-report.md .
+podman pod rm -f stress-test
