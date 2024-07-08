@@ -17,5 +17,6 @@ spec:
     image: localhost/scripts
 " | podman kube play --replace --build -
 podman container wait stress-test-scripts
-podman cp stress-test-scripts:/benchmark-report.md .
+podman cp stress-test-scripts:/benchmark-report.md result.md
+podman logs stress-test-scripts > mm.log
 podman pod rm -f stress-test

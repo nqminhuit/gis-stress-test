@@ -67,9 +67,6 @@ function foreach_subrepo_commits_on_current_branch() {
 }
 
 function main() {
-    rm -rf $ROOT_MODULE
-    curl -sSL 'https://en.wikipedia.org/wiki/Plain_text' -o $TEXT_FILE_TMP
-
     mkdir $ROOT_MODULE; cd $ROOT_MODULE
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"

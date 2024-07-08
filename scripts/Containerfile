@@ -9,7 +9,9 @@ USER root
 WORKDIR /app/gis
 COPY --from=build-jar-gis /app/gis/target/gis-*.jar target/
 COPY --from=build-jar-gis /app/gis/target/lib target/lib
-RUN native-image -march=compatibility -cp target/gis-*.jar "org.nqm.Gis" --no-fallback
+RUN native-image -march=compatibility -cp target/gis-*.jar "org.nqm.Gis" --no-fallback \
+-H:IncludeResources=".properties" \
+-H:IncludeResources="_gis"
 RUN mv org.nqm.gis gis
 
 FROM docker.io/alpine:3.20.1
