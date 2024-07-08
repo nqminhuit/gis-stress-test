@@ -18,5 +18,8 @@ spec:
 " | podman kube play --replace --build -
 podman container wait stress-test-scripts
 podman cp stress-test-scripts:/benchmark-report.md result.md
-podman logs stress-test-scripts > mm.log
+podman logs stress-test-scripts
 podman pod rm -f stress-test
+
+printf "\nCPU info:\n" >> result.md
+lscpu | grep CPU >> result.md

@@ -9,7 +9,7 @@ function benchmark_gis_files() {
            scramble_texts
        )}
     done
-    hyperfine -u millisecond --warmup 15 'gis files' -n 'files' --export-json perf_gis_files.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis files' -n 'files' --export-json perf_gis_files.json
     for i in $(seq 1 $N_REPOS)
     do {(
            cd $SUB_MODULE_PREFIX$i
@@ -85,12 +85,12 @@ function main() {
     cd $ROOT_MODULE
     gis init
 
-    hyperfine -u millisecond --warmup 15 'gis' --export-json perf_gis.json
-    hyperfine -u millisecond --warmup 15 'gis status' -n 'status' --export-json perf_gis_st.json
-    hyperfine -u millisecond --warmup 15 'gis branches' -n 'branches' --export-json perf_gis_branches.json
-    hyperfine -u millisecond --warmup 15 'gis branches -nn' -n 'branches_no_modules' --export-json perf_gis_branches_nn.json
-    hyperfine -u millisecond --warmup 15 'gis fetch' -n 'fetch' --export-json perf_gis_fe.json
-    hyperfine -u millisecond --warmup 15 --prepare 'gis co master' --cleanup 'gis co master' 'gis co br_tst_1' -n 'checkout' --export-json perf_gis_co.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis' --export-json perf_gis.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis status' -n 'status' --export-json perf_gis_st.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis branches' -n 'branches' --export-json perf_gis_branches.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis branches -nn' -n 'branches_no_modules' --export-json perf_gis_branches_nn.json
+    hyperfine -r 100 -u millisecond --warmup 15 'gis fetch' -n 'fetch' --export-json perf_gis_fe.json
+    hyperfine -r 100 -u millisecond --warmup 15 --prepare 'gis co master' --cleanup 'gis co master' 'gis co br_tst_1' -n 'checkout' --export-json perf_gis_co.json
     benchmark_gis_files
 
     touch benchmark-report.md
