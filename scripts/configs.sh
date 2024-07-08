@@ -5,7 +5,7 @@ BASIC_AUTH_TOKEN="cm9vdDpyb290" # base64 encoded of "root:root". ref: https://en
 
 ROOT_MODULE="/tmp/test-rootrepo"
 SUB_MODULE_PREFIX="test-subrepo-"
-TEXT_FILE_TMP="/tmp/sigtext-test-stress"
+TEXT_FILE_TMP="/file_plain_text"
 
 N_REPOS=10
 N_FILES=100

@@ -18,4 +18,5 @@ COPY --chmod=0755 configs.sh .
 COPY --chmod=0755 prepare.sh .
 COPY --chmod=0755 benchmark.sh .
 COPY --from=build-executable-gis /app/gis/gis /bin
+COPY file_plain_text /
 CMD ./prepare.sh && ./benchmark.sh

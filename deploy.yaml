@@ -7,7 +7,6 @@ spec:
   containers:
   - name: gitbucket
     image: ghcr.io/gitbucket/gitbucket:4.39.0
-    # image: localhost/gitbucket
     ports:
     - containerPort: 8080
       hostPort: 9898
