@@ -21,5 +21,9 @@ podman cp stress-test-scripts:/benchmark-report.md result.md
 podman logs stress-test-scripts
 podman pod rm -f stress-test
 
-printf "\nCPU info:\n" >> result.md
+printf "\nCPU info:" >> result.md
+printf "\n\`\`\`\n" >> result.md
 lscpu | grep CPU >> result.md
+printf "\`\`\`" >> result.md
+
+printf "\nResult is saved under $(readlink -f result.md)\n"

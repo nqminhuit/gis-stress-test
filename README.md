@@ -51,6 +51,7 @@ git version: `git version 2.45.2`
 hyperfine version: `hyperfine 1.18.0`
 
 CPU info:
+```
 CPU op-mode(s):                     32-bit, 64-bit
 CPU(s):                             8
 On-line CPU(s) list:                0-7
@@ -60,3 +61,4 @@ CPU max MHz:                        4800.0000
 CPU min MHz:                        400.0000
 NUMA node0 CPU(s):                  0-7
 Vulnerability Mmio stale data:      Mitigation; Clear CPU buffers; SMT vulnerable
+```
