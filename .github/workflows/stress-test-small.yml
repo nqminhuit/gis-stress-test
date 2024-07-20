@@ -27,7 +27,7 @@ jobs:
     - name: Install podman
       run: ./tools/install_podman.sh
       shell: bash
-    - run: Podman version
+    - run: podman version
     - name: Make up freespace
       run: |
         echo "before clean up:"
