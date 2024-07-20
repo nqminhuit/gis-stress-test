@@ -1,0 +1,54 @@
+name: '[SMALL dataset] Stress test gis'
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      gis-version:
+        description: 'Gis version'
+        required: false
+        default: ''
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+    - name: Install podman
+      run: ./tools/install_podman.sh
+      shell: bash
+    - run: Podman version
+    - name: Make up freespace
+      run: |
+        echo "before clean up:"
+        df -h
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /opt/ghc
+        sudo rm -rf "/usr/local/share/boost"
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        echo "after clean up:"
+        df -h
+    - name: Make executable
+      run: chmod +x run_on_small_dataset.sh
+    - name: Run test
+      run: ./run_on_small_dataset.sh
+      shell: bash
+    - name: Print report
+      run: cat result.md
+    - name: Storage used
+      run: df -h
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: "result-${{ inputs.gis-version }}.md"
+        path: result.md

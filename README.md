@@ -22,7 +22,7 @@ curl -X POST -H "Accept: application/json" -H "authorization: Basic cm9vdDpyb290
 # Run performance test inside container
 
 ```bash
-source run.sh
+source run_on_small_dataset.sh
 ```
 Observe repositores at: http://localhost:9898/
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./configs.sh
+source ./common.sh
 
 function create_repo() {
     repo_name=$1
