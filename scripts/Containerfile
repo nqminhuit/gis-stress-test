@@ -1,6 +1,6 @@
 FROM docker.io/maven:3.9.7-eclipse-temurin-21-alpine AS build-jar-gis
 RUN apk add --no-cache git
-RUN git clone --depth=1 --branch v2.0.0-dev-before-status-sort https://github.com/nqminhuit/gis.git /app/gis
+RUN git clone --depth=1 https://github.com/nqminhuit/gis.git /app/gis
 WORKDIR /app/gis
 RUN mvn -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn clean package
 
