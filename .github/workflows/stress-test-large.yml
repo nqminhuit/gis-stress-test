@@ -3,12 +3,12 @@ name: '[LARGE dataset] Stress test gis'
 on:
   workflow_dispatch:
     inputs:
-      gis-version:
-        description: 'Gis version'
-        required: false
-        default: ''
       commit:
         description: 'Gis commit'
+        required: true
+        default: ''
+      gis-version:
+        description: 'Gis version'
         required: false
         default: ''
 
@@ -41,7 +41,7 @@ jobs:
     - name: Make executable
       run: chmod +x run_on_large_dataset.sh
     - name: Run test
-      run: ./run_on_large_dataset.sh
+      run: ./run_on_large_dataset.sh ${{inputs.commit}}
       shell: bash
     - name: Storage used
       run: df -h
