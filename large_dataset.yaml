@@ -16,10 +16,10 @@ spec:
     - name: N_REPOS
       value: 100
     - name: N_FILES
-      value: 100
+      value: 200
     - name: N_BRANCHES
-      value: 10
+      value: 20
     - name: N_COMMITS
       value: 10
     - name: N_MOD_FILES
-      value: 100
+      value: 200
