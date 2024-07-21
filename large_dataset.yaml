@@ -18,7 +18,7 @@ spec:
     - name: N_FILES
       value: 100
     - name: N_BRANCHES
-      value: 100
+      value: 60
     - name: N_COMMITS
       value: 10
     - name: N_MOD_FILES
