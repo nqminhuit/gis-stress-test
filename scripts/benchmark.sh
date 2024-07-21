@@ -109,6 +109,14 @@ function main() {
     printf "git version: \`$(git --version)\`\n" >> benchmark-report.md
     printf "hyperfine version: \`$(hyperfine --version)\`\n" >> benchmark-report.md
     mv benchmark-report.md /benchmark-report.md
+
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis.json >> /gis_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_st.json >> /gis_st_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_branches.json >> /gis_branches_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_branches_nn.json >> /gis_branches_nn_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_fe.json >> /gis_fe_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_co.json >> /gis_co_means
+    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_files.json >> /gis_files_means
 }
 
 main

@@ -1,14 +1,14 @@
 name: '[SMALL dataset] Stress test gis'
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
   workflow_dispatch:
     inputs:
       gis-version:
         description: 'Gis version'
+        required: false
+        default: ''
+      commit:
+        description: 'Gis commit'
         required: false
         default: ''
 
@@ -47,6 +47,39 @@ jobs:
       run: df -h
     - name: Print report
       run: cat result.md > $GITHUB_STEP_SUMMARY
+    - name: Append means number for plot
+      run: |
+        cat _gis_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_means
+        cat _gis_st_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_st_means
+        cat _gis_branches_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_branches_means
+        cat _gis_branches_nn_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_branches_nn_means
+        cat _gis_fe_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_fe_means
+        cat _gis_co_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_co_means
+        cat _gis_files_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_files_means
+    - name: Check for means number before plot
+      run: |
+        cat data/gis_means
+        cat data/gis_st_means
+        cat data/gis_branches_means
+        cat data/gis_branches_nn_means
+        cat data/gis_fe_means
+        cat data/gis_co_means
+        cat data/gis_files_means
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install matplotlib
+    - name: Plot performance chart
+      run: python plot.py
+    - name: Commit & Push changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Record performance mean values
+        file_pattern: 'data/*'
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:

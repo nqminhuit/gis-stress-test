@@ -8,6 +8,10 @@ This is a downstream repository, it is triggered automatically by upstream repo:
 
 Each job will generate a report at summary step, can be found at : https://github.com/nqminhuit/gis-stress-test/actions
 
+# Gis Performance trend througout changes
+
+![performance visualize](data/gis_performance.svg)
+
 # Implementation
 
 ## Gitbucket Howto
