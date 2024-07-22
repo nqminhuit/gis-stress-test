@@ -39,10 +39,9 @@ function run_stress_test() {
         return 1
     fi
 
-    printf "\nCPU info:" >> result.md
-    printf "\n\`\`\`\n" >> result.md
-    lscpu | grep CPU >> result.md
-    printf "\`\`\`" >> result.md
+    printf "\nSystem info: " >> result.md
+    printf "[Standard GitHub-hosted runners for public repositories]" >> result.md
+    printf "(https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories)" >> result.md
 
     printf "\nResult is saved under $(readlink -f result.md)\n"
 }
