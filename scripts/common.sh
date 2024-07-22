@@ -28,6 +28,12 @@ function run_stress_test() {
     podman logs stress-test-scripts
     podman pod rm -f stress-test
 
+    if [ ! -s result.md ]
+    then
+        echo "ERROR: Performance result is empty!"
+        return 1
+    fi
+
     printf "\nCPU info:" >> result.md
     printf "\n\`\`\`\n" >> result.md
     lscpu | grep CPU >> result.md
