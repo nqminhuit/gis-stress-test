@@ -72,7 +72,7 @@ jobs:
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: "auto: record performance values"
+        commit_message: "auto: record performance values large dataset"
         file_pattern: 'data/*'
     - name: Upload artifact
       uses: actions/upload-artifact@v4
