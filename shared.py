@@ -8,7 +8,7 @@ def plot(arr, l):
         list(map(lambda x: int(x), arr[:, 1])),
         label = l)
 
-def plotFigure(gis_means, gis_st_means, gis_branches_means, gis_branches_nn_means, gis_fe_means, gis_co_means, gis_files_means):
+def plotFigure(gis_means, gis_st_means, gis_branches_means, gis_branches_nn_means, gis_fe_means, gis_co_means, gis_files_means, svg_name):
     if len(gis_means) > 1:
         plot(gis_means, 'gis')
 
@@ -35,5 +35,5 @@ def plotFigure(gis_means, gis_st_means, gis_branches_means, gis_branches_nn_mean
     plt.legend(loc='upper right')
     plt.xticks(rotation=45)
 
-    plt.savefig('data/gis_performance.svg')
+    plt.savefig(svg_name)
     # plt.show()

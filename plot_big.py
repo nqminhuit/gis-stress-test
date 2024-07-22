@@ -9,4 +9,4 @@ gis_fe_means = np.loadtxt('data/big/gis_fe_means', dtype='str', ndmin=2)
 gis_co_means = np.loadtxt('data/big/gis_co_means', dtype='str', ndmin=2)
 gis_files_means = np.loadtxt('data/big/gis_files_means', dtype='str', ndmin=2)
 
-plotFigure(gis_means, gis_st_means, gis_branches_means, gis_branches_nn_means, gis_fe_means, gis_co_means, gis_files_means)
+plotFigure(gis_means, gis_st_means, gis_branches_means, gis_branches_nn_means, gis_fe_means, gis_co_means, gis_files_means, 'data/big/gis_performance.svg')
