@@ -48,7 +48,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install matplotlib
     - run: git pull
-    - name: Append means number for plot
+    - name: Save results for plot
       run: |
         cat _gis_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_means
         cat _gis_st_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_st_means
@@ -57,8 +57,7 @@ jobs:
         cat _gis_fe_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_fe_means
         cat _gis_co_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_co_means
         cat _gis_files_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_files_means
-    - name: Plot performance chart
-      run: python plot.py
+        python plot.py
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
