@@ -17,6 +17,11 @@ function scramble_texts() {
 
 function run_stress_test() {
     podman container wait stress-test-scripts
+
+    printf "\nContainers sizes: \n"
+    podman ps -a --pod --size --format "table {{.Names}} {{.Status}} {{.PodName}} {{.Restarts}} {{.Size}}"
+    printf "\n"
+
     podman cp stress-test-scripts:/benchmark-report.md result.md
     podman cp stress-test-scripts:/gis_means _gis_means
     podman cp stress-test-scripts:/gis_st_means _gis_st_means
