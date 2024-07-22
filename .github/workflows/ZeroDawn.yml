@@ -1,0 +1,25 @@
+name: 'Zero Dawn'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reset-performance-stats:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Clean up
+      run: |
+        rm data/*.svg && for f in $(ls -1 data/gis*_means); do { echo "" > $f }; done;
+        rm data/big/*.svg && for f in $(ls -1 data/big/gis*_means); do { echo "" > $f }; done;
+
+    - name: Commit & Push changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "auto: delete performance values"
+        file_pattern: 'data/*'
+
+    - name: Initiate Zero Dawn
+      run: ./scripts/zerodawn.sh ${{ secrets.GIS_TOKEN }}
+      shell: bash
