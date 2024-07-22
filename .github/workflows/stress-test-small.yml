@@ -38,16 +38,13 @@ jobs:
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         echo "after clean up:"
         df -h
-        podman ps -a --pod --size --format "table {{.Names}} {{.Status}} {{.PodName}} {{.Restarts}} {{.Size}}"
     - name: Make executable
       run: chmod +x run_on_small_dataset.sh
     - name: Run test
       run: ./run_on_small_dataset.sh ${{inputs.commit}}
       shell: bash
     - name: Storage used
-      run: |
-        df -h
-        podman ps -a --pod --size --format "table {{.Names}} {{.Status}} {{.PodName}} {{.Restarts}} {{.Size}}"
+      run: df -h
     - name: Print report
       run: |
         cat result.md
