@@ -11,8 +11,20 @@ jobs:
 
     - name: Clean up
       run: |
-        rm data/*.svg && for f in $(ls -1 data/gis*_means); do { echo "" > $f }; done;
-        rm data/big/*.svg && for f in $(ls -1 data/big/gis*_means); do { echo "" > $f }; done;
+        echo "" > data/gis_performance.svg
+
+        for f in $(ls -1 data/gis*_means)
+        do {
+          echo "" > $f
+        }
+        done
+
+        for f in $(ls -1 data/big/gis*_means)
+        do {
+          echo "" > $f
+        }
+        done
+      shell: bash
 
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v5
