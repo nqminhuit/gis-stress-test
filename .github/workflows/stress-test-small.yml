@@ -5,8 +5,8 @@ on:
     inputs:
       commit:
         description: 'Gis commit'
-        required: true
-        default: ''
+        required: false
+        default: 'latest'
       gis-version:
         description: 'Gis version'
         required: false
