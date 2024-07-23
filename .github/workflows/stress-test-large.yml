@@ -45,7 +45,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install matplotlib
-    - run: git pull
+    - run: |
+        git fetch
+        git reset --hard origin/$(git branch --show-current)
     - name: Save results for plot
       run: |
         cat _gis_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_means
