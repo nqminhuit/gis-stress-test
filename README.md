@@ -34,10 +34,3 @@ create new repository with basic auth token (root:root):
 ```
 curl -X POST -H "Accept: application/json" -H "authorization: Basic cm9vdDpyb290" http://localhost:9898/api/v3/user/repos -d '{"name":"Hello-World","private":false}'
 ```
-
-## Run performance test inside container
-
-```bash
-source run_on_small_dataset.sh
-```
-Observe repositores at: http://localhost:9898/
