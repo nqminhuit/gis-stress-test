@@ -11,6 +11,9 @@ on:
         description: 'Command that lists commits to test'
         required: false
         default: ''
+        # e.g.,
+        # git log --reverse --pretty=format:'%h' fc3996b4f8aceae6954d5aa8a99f8cf5f607d92d.. --no-merges
+        # git log --invert-grep --grep="CI" --grep="docs" --grep="dev" --grep="README" --grep="github" --reverse --pretty=format:'%h' fc3996b4f8aceae6954d5aa8a99f8cf5f607d92d.. --no-merges
 
 jobs:
   reset-performance-stats:
