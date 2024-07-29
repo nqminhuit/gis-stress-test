@@ -88,7 +88,6 @@ function main() {
     hyperfine -r 500 -u millisecond --warmup 50 'gis' --export-json perf_gis.json
     hyperfine -r 500 -u millisecond --warmup 50 'gis status' -n 'status' --export-json perf_gis_st.json
     hyperfine -r 500 -u millisecond --warmup 50 'gis branches' -n 'branches' --export-json perf_gis_branches.json
-    hyperfine -r 500 -u millisecond --warmup 50 'gis branches -nn' -n 'branches_no_modules' --export-json perf_gis_branches_nn.json
     hyperfine -r 500 -u millisecond --warmup 50 'gis fetch' -n 'fetch' --export-json perf_gis_fe.json
     hyperfine -r 500 -u millisecond --warmup 50 --prepare 'gis co master' --cleanup 'gis co master' 'gis co br_tst_1' -n 'checkout' --export-json perf_gis_co.json
     benchmark_gis_files
@@ -113,7 +112,6 @@ function main() {
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis.json >> /gis_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_st.json >> /gis_st_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_branches.json >> /gis_branches_means
-    jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_branches_nn.json >> /gis_branches_nn_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_fe.json >> /gis_fe_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_co.json >> /gis_co_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_files.json >> /gis_files_means

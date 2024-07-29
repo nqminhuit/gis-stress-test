@@ -41,7 +41,7 @@ jobs:
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: "auto: delete performance values"
+        commit_message: "auto: Zero Dawn initiated"
         file_pattern: 'data/*'
 
     - name: Initiate Zero Dawn with command listing commits
