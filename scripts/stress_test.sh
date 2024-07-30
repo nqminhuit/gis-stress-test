@@ -20,6 +20,7 @@ function main() {
     podman cp stress-test-scripts:/gis_fe_means _gis_fe_means
     podman cp stress-test-scripts:/gis_co_means _gis_co_means
     podman cp stress-test-scripts:/gis_files_means _gis_files_means
+    podman cp stress-test-scripts:/gis_versions _gis_versions
     podman logs stress-test-scripts
     podman pod rm -f stress-test
 

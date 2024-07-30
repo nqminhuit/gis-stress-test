@@ -50,14 +50,15 @@ jobs:
         git reset --hard origin/$(git branch --show-current)
     - name: Save results for plot
       run: |
-        cat _gis_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_means
-        cat _gis_st_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_st_means
-        cat _gis_branches_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_branches_means
-        cat _gis_branches_nn_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_branches_nn_means
-        cat _gis_fe_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_fe_means
-        cat _gis_co_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_co_means
-        cat _gis_files_means | sed '1s/^/${{inputs.commit}} /' >> data/big/gis_files_means
-        python plot.py
+        cat _gis_means >> data/big/gis_means
+        cat _gis_st_means >> data/big/gis_st_means
+        cat _gis_branches_means >> data/big/gis_branches_means
+        cat _gis_branches_nn_means >> data/big/gis_branches_nn_means
+        cat _gis_fe_means >> data/big/gis_fe_means
+        cat _gis_co_means >> data/big/gis_co_means
+        cat _gis_files_means >> data/big/gis_files_means
+        cat _gis_versions >> data/big/gis_versions
+        python plot_big.py
     - name: Commit & Push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:

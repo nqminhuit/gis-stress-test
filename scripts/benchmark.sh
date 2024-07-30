@@ -115,6 +115,7 @@ function main() {
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_fe.json >> /gis_fe_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_co.json >> /gis_co_means
     jq -Mcr '.results | .[] | "\(.mean | .*1000|round/1)"' perf_gis_files.json >> /gis_files_means
+    gis --version | sed -e 's/gis\s//g' -e 's/(.*)//g' >> /gis_versions
 }
 
 main
