@@ -24,13 +24,14 @@ jobs:
     - name: Clean up
       run: |
         echo "" > data/gis_performance.svg
-
         for f in $(ls -1 data/gis*_means)
         do {
           echo "" > $f
         }
         done
 
+        echo "" > data/big/gis_performance.svg
+        echo "" > data/big/gis_versions
         for f in $(ls -1 data/big/gis*_means)
         do {
           echo "" > $f
