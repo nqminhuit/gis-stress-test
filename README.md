@@ -2,6 +2,9 @@
 
 ![performance visualize](data/gis_performance.svg)
 
+
+![performance visualize](data/big/gis_performance.svg)
+
 # Purpose of this repository
 
 This is a downstream repository, it is triggered automatically by upstream repo: https://github.com/nqminhuit/gis when:
@@ -10,7 +13,7 @@ This is a downstream repository, it is triggered automatically by upstream repo:
 2. when gis publishes a new **release**: will perform stress test on both **small** and **large** dataset
 
 
-Each job will generate a report at summary step, can be found at : https://github.com/nqminhuit/gis-stress-test/actions
+Each job will generate a report at summary step, can be found at: https://github.com/nqminhuit/gis-stress-test/actions
 
 # Implementation
 
