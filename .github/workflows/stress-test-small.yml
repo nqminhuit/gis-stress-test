@@ -53,7 +53,6 @@ jobs:
         cat _gis_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_means
         cat _gis_st_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_st_means
         cat _gis_branches_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_branches_means
-        cat _gis_branches_nn_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_branches_nn_means
         cat _gis_fe_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_fe_means
         cat _gis_co_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_co_means
         cat _gis_files_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_files_means

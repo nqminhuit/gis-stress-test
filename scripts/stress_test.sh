@@ -16,7 +16,6 @@ function main() {
     podman cp stress-test-scripts:/gis_means _gis_means
     podman cp stress-test-scripts:/gis_st_means _gis_st_means
     podman cp stress-test-scripts:/gis_branches_means _gis_branches_means
-    podman cp stress-test-scripts:/gis_branches_nn_means _gis_branches_nn_means
     podman cp stress-test-scripts:/gis_fe_means _gis_fe_means
     podman cp stress-test-scripts:/gis_co_means _gis_co_means
     podman cp stress-test-scripts:/gis_files_means _gis_files_means

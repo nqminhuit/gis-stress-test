@@ -53,7 +53,6 @@ jobs:
         cat _gis_means >> data/big/gis_means
         cat _gis_st_means >> data/big/gis_st_means
         cat _gis_branches_means >> data/big/gis_branches_means
-        cat _gis_branches_nn_means >> data/big/gis_branches_nn_means
         cat _gis_fe_means >> data/big/gis_fe_means
         cat _gis_co_means >> data/big/gis_co_means
         cat _gis_files_means >> data/big/gis_files_means
