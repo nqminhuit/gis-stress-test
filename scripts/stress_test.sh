@@ -3,7 +3,7 @@
 function main() {
     podman version
     podman build --build-arg GIS_COMMIT=$1 -f scripts/Containerfile-jar-gis -t build-jar-gis .
-    podman kube play --replace --build $2
+    podman kube play -q --replace --build $2
 
     printf "\nPlease wait while dataset is being setup...\n"
     podman container wait stress-test-scripts
@@ -20,7 +20,8 @@ function main() {
     podman cp stress-test-scripts:/gis_co_means _gis_co_means
     podman cp stress-test-scripts:/gis_files_means _gis_files_means
     podman cp stress-test-scripts:/gis_versions _gis_versions
-    podman logs stress-test-scripts
+
+    # podman logs stress-test-scripts | grep -v 'remote: Updating references' | sed '/^\s*$/d' > result.log
     podman pod rm -f stress-test
 
     if [ ! -s result.md ]
@@ -32,8 +33,6 @@ function main() {
     printf "\nSystem info: " >> result.md
     printf "[Standard GitHub-hosted runners for public repositories]" >> result.md
     printf "(https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories)" >> result.md
-
-    printf "\nResult is saved under $(readlink -f result.md)\n"
 }
 
 main $1 $2
