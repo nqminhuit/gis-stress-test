@@ -63,8 +63,3 @@ jobs:
       with:
         commit_message: "auto: record performance values small dataset"
         file_pattern: 'data/*'
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: "result-${{ inputs.gis-version }}.md"
-        path: result.md
