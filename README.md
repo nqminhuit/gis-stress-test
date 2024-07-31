@@ -17,6 +17,11 @@ Each job will generate a report at summary step, can be found at: https://github
 
 # Implementation
 
+To run test on local machine:
+```bash
+./scripts/stress_test.sh <commit-SHA or tag> [large|small]_dataset.yaml
+```
+
 ## Gitbucket Howto
 
 Build and deploy:

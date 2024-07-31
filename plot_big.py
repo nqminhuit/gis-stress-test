@@ -8,7 +8,7 @@ gis_fe_means = np.loadtxt('data/big/gis_fe_means')
 gis_co_means = np.loadtxt('data/big/gis_co_means')
 gis_files_means = np.loadtxt('data/big/gis_files_means')
 
-versions = np.loadtxt('data/big/gis_versions', dtype='str')
+versions = np.loadtxt('data/big/gis_versions', dtype='str', ndmin=1)
 
 x = np.arange(len(versions))
 width = 0.1
