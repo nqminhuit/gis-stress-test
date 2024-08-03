@@ -34,7 +34,7 @@ if len(gis_branches_means) > 1:
 if len(gis_co_means) > 1:
     plot(gis_co_means, 'gis checkout')
 
-ax.grid(axis=('x'), linestyle='--', linewidth=.25)
+ax.grid(linestyle='--', linewidth=.25)
 ax.margins(0)
 plt.ylabel('Time (ms)')
 plt.xlabel('Commit SHA')
