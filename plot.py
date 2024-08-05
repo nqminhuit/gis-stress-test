@@ -8,7 +8,7 @@ gis_fe_means = np.loadtxt('data/gis_fe_means', dtype='str', ndmin=2)
 gis_co_means = np.loadtxt('data/gis_co_means', dtype='str', ndmin=2)
 gis_files_means = np.loadtxt('data/gis_files_means', dtype='str', ndmin=2)
 
-fig, ax = plt.subplots(figsize=(19, 10))
+fig, ax = plt.subplots(figsize=(19, 10), layout='constrained')
 
 def plot(arr, l):
     plt.plot(
@@ -39,7 +39,7 @@ ax.margins(0)
 plt.ylabel('Time (ms)')
 plt.xlabel('Commit SHA')
 plt.legend(loc='best')
-plt.xticks(rotation=45)
+plt.xticks(rotation=65)
 
 # plt.show()
 plt.savefig('data/gis_performance.svg')

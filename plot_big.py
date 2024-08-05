@@ -28,7 +28,7 @@ fig, ax = plt.subplots(figsize=(10, 10), layout='constrained')
 for att, measure in means.items():
     offset = width * multiplier
     rects = ax.bar(x + offset, measure, width, label=att)
-    ax.bar_label(rects)
+    ax.bar_label(rects, label_type='center', color='w')
     multiplier += 1
 
 ax.set_ylabel('Time (ms)')
