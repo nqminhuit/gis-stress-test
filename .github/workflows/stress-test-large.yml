@@ -11,6 +11,10 @@ on:
         description: 'Gis version'
         required: false
         default: ''
+      should-commit-stats:
+        type: boolean
+        description: 'Should commit stats to repo'
+        default: false
 
 jobs:
 
@@ -60,6 +64,7 @@ jobs:
         cat _gis_versions >> data/big/gis_versions
         python plot_big.py
     - name: Commit & Push changes
+      if: ${{inputs.should-commit-stats}}
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "auto: record performance values large dataset"

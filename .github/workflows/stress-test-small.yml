@@ -11,6 +11,10 @@ on:
         description: 'Gis version'
         required: false
         default: ''
+      should-commit-stats:
+        type: boolean
+        description: 'Should commit stats to repo'
+        default: false
 
 jobs:
 
@@ -59,6 +63,7 @@ jobs:
         cat _gis_files_means | sed '1s/^/${{inputs.commit}} /' >> data/gis_files_means
         python plot.py
     - name: Commit & Push changes
+      if: ${{inputs.should-commit-stats}}
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "auto: record performance values small dataset"
