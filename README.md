@@ -15,6 +15,8 @@ This is a downstream repository, it is triggered automatically by upstream repo:
 
 Each job will generate a report at summary step, can be found at: https://github.com/nqminhuit/gis-stress-test/actions
 
+Performance benchmark spec: [Standard GitHub-hosted runners for public repositories](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories)
+
 # Implementation
 
 To run test on local machine:
