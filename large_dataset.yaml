@@ -5,11 +5,6 @@ metadata:
 spec:
   restartPolicy: Never
   containers:
-  - name: gitbucket
-    image: ghcr.io/gitbucket/gitbucket:4.39.0
-    ports:
-    - containerPort: 8080
-      hostPort: 9898
   - name: scripts
     image: localhost/scripts
     env:
@@ -20,6 +15,6 @@ spec:
     - name: N_BRANCHES
       value: 30
     - name: N_COMMITS
-      value: 10
+      value: 20
     - name: N_MOD_FILES
       value: 100

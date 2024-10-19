@@ -21,7 +21,11 @@ jobs:
   build:
 
     runs-on: ubuntu-24.04
-
+    services:
+      gitbucket:
+        image: ghcr.io/gitbucket/gitbucket:4.39.0
+        ports:
+          - 9898:8080
     steps:
     - uses: actions/checkout@v4
     - name: Make up freespace
