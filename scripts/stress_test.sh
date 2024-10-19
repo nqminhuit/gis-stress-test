@@ -24,7 +24,7 @@ function main() {
     # podman logs stress-test-scripts | grep -v 'remote: Updating references' | sed '/^\s*$/d' > result.log
     podman pod rm -f stress-test
 
-    if [ ! -s result.md ]
+    if [[ ! -s result.md ]]
     then
         echo "ERROR: Performance result is empty!"
         return 1
