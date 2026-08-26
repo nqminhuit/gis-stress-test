@@ -6,7 +6,7 @@ on:
       n_commits:
         description: 'Number of latest commits to test'
         required: false
-        default: 10
+        default: '10'
       cmd_list_commits:
         description: 'Command that lists commits to test'
         required: false
@@ -17,9 +17,9 @@ on:
 
 jobs:
   reset-performance-stats:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Clean up
       run: |
